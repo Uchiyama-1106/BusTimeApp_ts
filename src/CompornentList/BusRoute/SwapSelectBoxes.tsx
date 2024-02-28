@@ -1,5 +1,10 @@
 import { useAtomValue, useSetAtom } from "jotai";
-import { startAtom, goalAtom, changedStartValueAtom, changedGoalValueAtom } from "../Atoms";
+import {
+  startAtom,
+  goalAtom,
+  changedStartValueAtom,
+  changedGoalValueAtom,
+} from "../Atoms";
 
 const SwapSelectBoxes = () => {
   const start = useAtomValue(startAtom);
@@ -14,6 +19,6 @@ const SwapSelectBoxes = () => {
   };
 
   return <button onClick={swapValues}>↑↓</button>;
-}
+};
 
 export default SwapSelectBoxes;

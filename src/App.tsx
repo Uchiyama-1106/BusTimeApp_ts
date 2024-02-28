@@ -1,14 +1,13 @@
-import BusRoute from "./CompornentList/BusRoute/BusRoute"
-import NowTime from "./CompornentList/NowTime"
-
+import BusRoute from "./CompornentList/BusRoute/BusRoute";
+import NowTime from "./CompornentList/NowTime";
 
 function App() {
-  return(
+  return (
     <div>
       <NowTime />
       <BusRoute />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

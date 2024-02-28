@@ -21,7 +21,9 @@ const holidayCheck: holidayCheck = (now: Date) => {
   ];
   const month: number = now.getMonth();
   const date: number = now.getDate();
-  if (speHoliday2024[month].includes(date)) {
+  const day: number = now.getDay();
+  //祝日　または　土日ならtrue
+  if (speHoliday2024[month].includes(date) || [0, 6].includes(day)) {
     return true;
   } else {
     return false;
@@ -32,7 +34,6 @@ export const holidayCheckAtom = atom<boolean>((get) => {
   const now = get(nowAtom);
   return holidayCheck(now);
 });
-
 
 // BusRoute バス停のリスト　出発するバス停　到着するバス停
 export const ListAtom = atom<string[]>([
@@ -86,26 +87,26 @@ export const ListAtom = atom<string[]>([
   "渋川駅",
 ]);
 
-export const changedStartValueAtom = atom<string>("")
+export const changedStartValueAtom = atom<string>("");
 
 export const startAtom = atom<string>((get) => {
   const List = get(ListAtom);
   const Start = get(changedStartValueAtom);
-  if (Start === ""){
-  return List[0];
-  }else{
+  if (Start === "") {
+    return List[0];
+  } else {
     return Start;
   }
 });
 
-export const changedGoalValueAtom = atom<string>("")
+export const changedGoalValueAtom = atom<string>("");
 
 export const goalAtom = atom<string>((get) => {
   const List = get(ListAtom);
   const Goal = get(changedGoalValueAtom);
-  if (Goal === ""){
-  return List[24];
-  }else{
+  if (Goal === "") {
+    return List[24];
+  } else {
     return Goal;
   }
 });
