@@ -13,10 +13,12 @@
 
 ## 使用言語
 React 
+
 TypeScript
 
 ## 使用した拡張機能
 ES7 React/Redux/GraphQL/React-Native snippets
+
 Prettier - Code formatter
 
 ## 環境設定の手順
