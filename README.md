@@ -59,5 +59,3 @@ Prettier - Code formatter
   
   "http://localhost:3000/"
   にてアプリが確認できるはずです。
-
-その他
