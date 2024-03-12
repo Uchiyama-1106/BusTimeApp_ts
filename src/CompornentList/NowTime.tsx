@@ -45,6 +45,7 @@ const NowTime = () => {
   return (
     <div>
       <h2>現在日時</h2>
+      <p>{nowMDH}</p>
       <button onClick={nowHandleClick}>現在の日時に合わせる</button>
       <div></div>
       <input
@@ -80,7 +81,6 @@ const NowTime = () => {
       <div></div>
       <button onClick={setTimeHandleClick}>指定の日時に合わせる</button>
 
-      <p>{nowMDH}</p>
     </div>
   );
 };
