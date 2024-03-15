@@ -15697,6 +15697,14 @@ export const stopInfo = atom<stops[]>((get) => {
   return [...Start, ...Goal, ...NearStart, ...NearGoal];
 });
 
+const oneDigitCheck = (value: number) => {
+  if (value >= 10) {
+    return value.toString();
+  } else {
+    return "0" + value.toString();
+  }
+};
+
 
 
 export const busTime = atom((get) => {
@@ -15710,13 +15718,7 @@ export const busTime = atom((get) => {
   // Trips => TripIDでインデックスを取得 => Stop_timesで該当するインデックスを検索=>Startが現在時刻より後に出発時刻が設定されているか、
   const Trips: trips[] = get(busTrips);
 
-  const oneDigitCheck = (value: number) => {
-    if (value >= 10) {
-      return value.toString();
-    } else {
-      return "0" + value.toString();
-    }
-  };
+
   const nowTime: number = Number(
     Now.getHours().toString() +
     oneDigitCheck(Now.getMinutes()) +
@@ -15779,17 +15781,14 @@ export const busTime = atom((get) => {
   let targetbustripId: string[] = List.map((value) => value[0].trip_id);
 
 
-
-
-
+  console.log(firstStop)
 
 
   const checkNearTarget = (nearStartStop: stops[], nearGoalStop: stops[]) => {
     const StartIDList = nearStartStop.map((value) => value.stop_id);
     const GoalIDList = nearGoalStop.map((value) => value.stop_id);
-
-    const checkStart: number = (firstStop === null) ? 0 : firstStop - 3;
-    const checkEnd: number = (firstStop === null) ? Trips.length : firstStop - firstStop + 5;
+    const checkStart: number = (firstStop === null) ? 0 : firstStop - 5;
+    const checkEnd: number = (firstStop === null) ? Trips.length : firstStop + 5;
     for (let i: number = checkStart; i < checkEnd; i++) {
       const trip: trips = Trips[i];
       const tripIndex: number = TripID.findIndex(
@@ -15834,6 +15833,7 @@ export const busTime = atom((get) => {
           }
         }
       }
+
       if (
         StartFlag === true &&
         GoalFlag === true &&
@@ -15856,7 +15856,7 @@ export const busTime = atom((get) => {
       Number(a[1].departure_time.split(":").join("")) -
       Number(b[1].departure_time.split(":").join(""))
   );
-  if (List.length > 5) { List.filter((_value, index) => index < 5) }
+  const ansList = List.filter((_value, index) => index < 5)
 
-  return List;
+  return ansList;
 });

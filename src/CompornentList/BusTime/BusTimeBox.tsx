@@ -2,40 +2,22 @@ import { useAtomValue } from "jotai";
 import { stopInfo } from "../Atoms";
 
 type trips = {
-  route_id: string;
   service_id: string;
   trip_id: string;
   trip_headsign: string;
-  block_id: string;
-  trip_short_name: string;
-  direction_id: string;
-  shape_id: string;
 };
 type stop_times = {
-  route_id: string;
   trip_id: string;
   arrival_time: string;
   departure_time: string;
   stop_id: string;
-  stop_sequence: string;
-  stop_headsign: string;
-  pickup_type: string;
-  drop_off_type: string;
-  timepoint: string;
 };
 
 type stops = {
   stop_id: string;
-  stop_code: string;
   stop_name: string;
-  stop_desc: string;
   stop_lat: string;
   stop_lon: string;
-  zone_id: string;
-  stop_url: string;
-  location_type: string;
-  platform_code: string;
-  parent_station: string;
 };
 
 interface BusTimeBoxProps {
