@@ -17,8 +17,6 @@ type stop_times = {
 const BusTime = () => {
   const busTimes: Array<[trips, stop_times, stop_times]> =
     useAtomValue(busTime);
-  console.log(busTimes)
-
   const CreateBusTime = () => {
     return busTimes.map((value, index) => (
       <BusTimeBox key={index} TripAndTimes={value} />
