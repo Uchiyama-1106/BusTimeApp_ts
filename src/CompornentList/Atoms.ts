@@ -15785,7 +15785,7 @@ export const busTime = atom((get) => {
     const StartIDList = nearStartStop.map((value) => value.stop_id);
     const GoalIDList = nearGoalStop.map((value) => value.stop_id);
     const checkStart: number = (firstStop === null  || firstStop < 10) ? 0 : firstStop - 10;
-    const checkEnd: number = (firstStop === null || firstStop > Trips.length - 10) ? Trips.length : firstStop + 8;
+    const checkEnd: number = (firstStop === null || firstStop > Trips.length - 10) ? Trips.length : firstStop + 10;
     for (let i: number = checkStart; i < checkEnd; i++) {
       const trip: trips = Trips[i];
       const tripIndex: number = TripID.findIndex(
