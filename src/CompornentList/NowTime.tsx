@@ -35,11 +35,10 @@ const NowTime = () => {
   const [newDate, setNewDate] = useState(now.getDate());
   const [newHour, setNewHour] = useState(now.getHours());
   const [newMinutes, setNewMinutes] = useState(now.getMinutes());
-  const [newSeconds, setNewSeconds] = useState(now.getSeconds());
 
   const setTimeHandleClick = () =>
     setNow(
-      new Date(new Date().getFullYear(), newMonth - 1, newDate, newHour, newMinutes, newSeconds)
+      new Date(new Date().getFullYear(), newMonth - 1, newDate, newHour, newMinutes, 0)
     );
 
   return (
@@ -72,12 +71,6 @@ const NowTime = () => {
         onChange={(e) => setNewMinutes(parseInt(e.target.value))}
       />
       <span>分</span>
-      <input
-        type="number"
-        value={newSeconds}
-        onChange={(e) => setNewSeconds(parseInt(e.target.value))}
-      />
-      <span>秒</span>
       <div></div>
       <button onClick={setTimeHandleClick}>指定の日時に合わせる</button>
 

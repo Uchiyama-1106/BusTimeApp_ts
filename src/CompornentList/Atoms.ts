@@ -15637,6 +15637,7 @@ const nearTargetStops: string[][] = [];
 const filteredSaveList: stops[] = saveList.filter(
   (item): item is stops => item !== undefined
 );
+
 for (let i = 1; i < saveList.length; i++) {
   const baseStop: stops = filteredSaveList[i];
   const distanceList: distanceList[] = [];
@@ -15660,6 +15661,30 @@ for (let i = 1; i < saveList.length; i++) {
     distanceList[1].name,
   ]);
 }
+
+
+const sort: () => string[] = () => {
+  const baseStop: stops = filteredSaveList.find((value) => value.stop_name === "前橋駅") || filteredSaveList[0];
+  const distanceList: distanceList[] = [];
+for (let i = 1; i < saveList.length; i++) {
+    const compereStop: stops = filteredSaveList[i];
+      const lat: number =
+        (Number(compereStop.stop_lat) - Number(baseStop.stop_lat)) ** 2;
+      const lon: number =
+        (Number(compereStop.stop_lon) - Number(baseStop.stop_lon)) ** 2;
+      const distance: number = lat + lon;
+      distanceList.push({ name: compereStop.stop_name, distance: distance });
+}    
+  distanceList.sort((a, b) => a.distance - b.distance);
+  return distanceList.map((value) => value.name)
+};
+  
+export const sortedBusSpotList = sort();
+
+
+
+
+
 
 const NearbusStartTransrateToID = atom<stops[][]>((get) => {
   const Start = get(startAtom);

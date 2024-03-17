@@ -1,11 +1,11 @@
-import { BusSpotList } from "../Atoms";
+import { sortedBusSpotList } from "../Atoms";
 
 interface SelectBoxProps {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 const SelectBox: React.FC<SelectBoxProps> = ({ value, onChange }) => {
-  const List: string[] = BusSpotList;
+  const List: string[] = sortedBusSpotList;
   return (
     <div>
       <select value={value} onChange={onChange}>
