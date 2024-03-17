@@ -22,7 +22,8 @@ const BusTime = () => {
       <BusTimeBox key={index} TripAndTimes={value} />
     ));
   };
-
+  console.log(busTimes)
+  
   return <div>{CreateBusTime()}</div>;
 };
 export default BusTime;

@@ -15600,7 +15600,7 @@ export const BusServiceID = atom((get) => {
   }
 });
 
-export const busTrips = atom((get) => {
+const busTrips = atom((get) => {
   const ServiceID = get(BusServiceID);
   var ans: trips[] = [];
   if (ServiceID === "平日") var ans = tripsByServiceID[0];
@@ -15612,13 +15612,13 @@ export const busTrips = atom((get) => {
   return ans;
 });
 
-export const busStartTransrateToID = atom<stops[]>((get) => {
+const busStartTransrateToID = atom<stops[]>((get) => {
   const Start = get(startAtom);
   const StartID: stops[] = stops.filter((value) => value.stop_name === Start);
   return StartID;
 });
 
-export const busGoalTransrateToID = atom<stops[]>((get) => {
+const busGoalTransrateToID = atom<stops[]>((get) => {
   const Goal = get(goalAtom);
   const GoalID: stops[] = stops.filter((value) => value.stop_name === Goal);
   return GoalID;
@@ -15661,7 +15661,7 @@ for (let i = 1; i < saveList.length; i++) {
   ]);
 }
 
-export const NearbusStartTransrateToID = atom<stops[][]>((get) => {
+const NearbusStartTransrateToID = atom<stops[][]>((get) => {
   const Start = get(startAtom);
   const NearStart: string[] =
     nearTargetStops.find((value) => value[0] === Start) || [];
@@ -15748,6 +15748,7 @@ export const busTime = atom((get) => {
       departure_time: "",
       stop_id: "",
     };
+
     // 到着情報ごとに
     for (let j = 0; j < Stop_time.length && List.length < 5; j++) {
       let depTime: number = Number(
@@ -15784,7 +15785,7 @@ export const busTime = atom((get) => {
   const checkNearTarget = (nearStartStop: stops[], nearGoalStop: stops[]) => {
     const StartIDList = nearStartStop.map((value) => value.stop_id);
     const GoalIDList = nearGoalStop.map((value) => value.stop_id);
-    const checkStart: number = (firstStop === null  || firstStop < 10) ? 0 : firstStop - 10;
+    const checkStart: number = (firstStop === null  || firstStop < 15) ? 0 : firstStop - 15;
     const checkEnd: number = (firstStop === null || firstStop > Trips.length - 10) ? Trips.length : firstStop + 10;
     for (let i: number = checkStart; i < checkEnd; i++) {
       const trip: trips = Trips[i];
