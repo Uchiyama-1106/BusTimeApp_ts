@@ -18,7 +18,7 @@ const SwapSelectBoxes = () => {
     setGoal(temp);
   };
 
-  return <button onClick={swapValues}>↑↓</button>;
+  return <button onClick={swapValues} className="w-10 border border-white rounded-lg font-bold bg-orange-400">↑↓</button>;
 };
 
 export default SwapSelectBoxes;

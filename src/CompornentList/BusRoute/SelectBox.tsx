@@ -8,7 +8,7 @@ const SelectBox: React.FC<SelectBoxProps> = ({ value, onChange }) => {
   const List: string[] = sortedBusSpotList;
   return (
     <div>
-      <select value={value} onChange={onChange}>
+      <select value={value} onChange={onChange} className="w-64 border font-semibold">
         {List.map((option, index) => (
           <option key={index} value={option}>
             {option}

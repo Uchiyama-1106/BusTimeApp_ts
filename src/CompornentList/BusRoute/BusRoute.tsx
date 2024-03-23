@@ -22,9 +22,13 @@ const BusRoute = () => {
 
   return (
     <div>
-      <SelectBox value={start} onChange={startChange} />
+      <div className="flex">
       <SwapSelectBoxes />
+      <div className="ml-1.5">
+      <SelectBox value={start} onChange={startChange} />
       <SelectBox value={goal} onChange={goalChange} />
+      </div>
+      </div>
     </div>
   );
 };

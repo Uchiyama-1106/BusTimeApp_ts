@@ -1,34 +1,31 @@
-import { useAtom, useAtomValue } from "jotai";
-import { BusServiceID, nowAtom } from "./Atoms.ts";
-import { useState } from "react";
+import { useAtom } from "jotai";
+import { nowAtom } from "./Atoms.ts";
+import {  useEffect, useState } from "react";
+
+interface SelectBoxProps {
+  value: number;
+  list: number[];
+  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+}
+const DateSelectBox: React.FC<SelectBoxProps> = ({ value, list, onChange }) => {
+  const List: number[] = list;
+  return (
+    <div className="w-11 py-1 border border-black rounded-lg font-semibold bg-white">
+      <select value={value} onChange={onChange}>
+        {List.map((option, index) => (
+          <option key={index} value={option}>
+            {option}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+};
+
+
 const NowTime = () => {
   const [now, setNow] = useAtom(nowAtom);
   const nowHandleClick = () => setNow(new Date());
-
-  const dayList: string[] = [
-    "(日)",
-    "(月)",
-    "(火)",
-    "(水)",
-    "(木)",
-    "(金)",
-    "(土)",
-  ];
-  const nowServiceID = useAtomValue(BusServiceID)
-
-  const nowMDH: string =
-    now.getMonth() +
-    1 +
-    "月" +
-    now.getDate() +
-    "日" +
-    dayList[now.getDay()] +
-    now.getHours() +
-    "時" +
-    now.getMinutes() +
-    "分" +
-    "(" + nowServiceID + "ダイヤ)";
-
 
   const [newMonth, setNewMonth] = useState(now.getMonth() +
     1);
@@ -36,45 +33,44 @@ const NowTime = () => {
   const [newHour, setNewHour] = useState(now.getHours());
   const [newMinutes, setNewMinutes] = useState(now.getMinutes());
 
+  const monthList = Array.from({length: 12}, (_, i) => i + 1);
+  const dateList = Array.from({length: 31}, (_, i) => i + 1);
+  const hourList = Array.from({length: 24}, (_, i) => i);
+  const minutesList = Array.from({length: 60}, (_, i) => i);
+
+  useEffect(() => {
+    setNewMonth(now.getMonth() + 1);
+    setNewDate(now.getDate());
+    setNewHour(now.getHours());
+    setNewMinutes(now.getMinutes());
+  }, [now]);
+
   const setTimeHandleClick = () =>
     setNow(
       new Date(new Date().getFullYear(), newMonth - 1, newDate, newHour, newMinutes, 0)
     );
 
-  return (
-    <div>
-      <h2>現在日時</h2>
-      <p>{nowMDH}</p>
-      <button onClick={nowHandleClick}>現在の日時に合わせる</button>
-      <div></div>
-      <input
-        type="number"
-        value={newMonth}
-        onChange={(e) => setNewMonth(parseInt(e.target.value))}
-      />
-      <span>月</span>
-      <input
-        type="number"
-        value={newDate}
-        onChange={(e) => setNewDate(parseInt(e.target.value))}
-      />
-      <span>日</span>
-      <input
-        type="number"
-        value={newHour}
-        onChange={(e) => setNewHour(parseInt(e.target.value))}
-      />
-      <span>時</span>
-      <input
-        type="number"
-        value={newMinutes}
-        onChange={(e) => setNewMinutes(parseInt(e.target.value))}
-      />
-      <span>分</span>
-      <div></div>
-      <button onClick={setTimeHandleClick}>指定の日時に合わせる</button>
 
-    </div>
+  return (
+      <div>
+
+        <div className="flex mb-2 items-end">
+        <div className="mr-1 font-semibold text-1xl">出発日時：</div>
+        <DateSelectBox value={newMonth} list={monthList} onChange= {(e: React.ChangeEvent<HTMLSelectElement>) => setNewMonth(parseInt(e.target.value))} />
+        <div className="mx-1">月</div>
+        <DateSelectBox value={newDate} list={dateList} onChange= {(e: React.ChangeEvent<HTMLSelectElement>) => setNewDate(parseInt(e.target.value))} />
+        <div className="mx-1">日</div>
+        <DateSelectBox value={newHour} list={hourList} onChange= {(e: React.ChangeEvent<HTMLSelectElement>) => setNewHour(parseInt(e.target.value))} />
+        <div className="mx-1">時</div>
+        <DateSelectBox value={newMinutes} list={minutesList} onChange= {(e: React.ChangeEvent<HTMLSelectElement>) => setNewMinutes(parseInt(e.target.value))} />
+        <div className="mx-1">分</div>
+        {/* <div>{"(" + nowServiceID + "ダイヤ)"}</div> */}
+        </div>
+        <div className="mb-2">
+          <button onClick={nowHandleClick} className="mr-3 w-32 border border-black rounded-lg font-semibold bg-white">現在日時で検索</button>
+          <button onClick={setTimeHandleClick} className=" w-32 border border-black rounded-lg font-semibold bg-white">指定日時で検索</button>
+        </div>
+      </div>
   );
 };
 
