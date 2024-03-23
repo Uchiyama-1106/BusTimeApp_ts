@@ -6,11 +6,14 @@ import NowTime from "./CompornentList/NowTime.tsx";
 function App() {
   return (
     <div className=''>
-      <header className="pt-3 pb-3 pl-2.5 bg-sky-200">
-        <NowTime />
-        <BusRoute />
+      <header className="fixed top-0 left-0 right-0 h-40  bg-sky-200">
+        <div className='pt-2 px-1'>
+          <NowTime />
+          <BusRoute />
+        </div>
       </header>
-      <div className='mx-1'>
+
+      <div className='... mt-40 mx-1.5'>
         <BusTime />
       </div>
     </div>

@@ -10,10 +10,10 @@ interface SelectBoxProps {
 const DateSelectBox: React.FC<SelectBoxProps> = ({ value, list, onChange }) => {
   const List: number[] = list;
   return (
-    <div className="w-11 py-1 border border-black rounded-lg font-semibold bg-white">
-      <select value={value} onChange={onChange}>
+    <div className="w-14 py-4 border border-black rounded-lg font-semibold bg-white">
+      <select value={value} onChange={onChange} className="w-11 bg-white">
         {List.map((option, index) => (
-          <option key={index} value={option}>
+          <option key={index} value={option} className="text-bold">
             {option}
           </option>
         ))}
@@ -55,7 +55,10 @@ const NowTime = () => {
       <div>
 
         <div className="flex mb-2 items-end">
-        <div className="mr-1 font-semibold text-1xl">出発日時：</div>
+        <div className="mr-2">
+          <div className="mr-1 font-semibold ">出発</div>
+          <div className="mr-1 font-semibold ">時刻</div>
+        </div>
         <DateSelectBox value={newMonth} list={monthList} onChange= {(e: React.ChangeEvent<HTMLSelectElement>) => setNewMonth(parseInt(e.target.value))} />
         <div className="mx-1">月</div>
         <DateSelectBox value={newDate} list={dateList} onChange= {(e: React.ChangeEvent<HTMLSelectElement>) => setNewDate(parseInt(e.target.value))} />
@@ -66,9 +69,9 @@ const NowTime = () => {
         <div className="mx-1">分</div>
         {/* <div>{"(" + nowServiceID + "ダイヤ)"}</div> */}
         </div>
-        <div className="mb-2">
-          <button onClick={nowHandleClick} className="mr-3 w-32 border border-black rounded-lg font-semibold bg-white">現在日時で検索</button>
-          <button onClick={setTimeHandleClick} className=" w-32 border border-black rounded-lg font-semibold bg-white">指定日時で検索</button>
+        <div className="flex justify-center space-x-4 mb-2">
+          <button onClick={nowHandleClick} className="w-40 border border-black rounded-lg font-semibold bg-white">現在日時で検索</button>
+          <button onClick={setTimeHandleClick} className=" w-40 border border-black rounded-lg font-semibold bg-white">指定日時で検索</button>
         </div>
       </div>
   );

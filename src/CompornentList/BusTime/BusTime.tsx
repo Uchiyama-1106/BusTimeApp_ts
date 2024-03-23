@@ -23,6 +23,6 @@ const BusTime = () => {
     ));
   };
   
-  return <div>{CreateBusTime()}</div>;
+  return <div className="pt-0.5">{CreateBusTime()}</div>;
 };
 export default BusTime;
