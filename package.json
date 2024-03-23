@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "build": "tsc && vite build && cp -r dist docs",
     "rebuild": "vite build && rm -R docs && cp -r dist docs",
     "git": "git add . && git commit && git push origin main",
-    "build": "tsc && vite build && cp -r dist docs",
     "preview": "vite preview",
     "test": "vitest watch",
     "coverage": "vitest run --coverage",
