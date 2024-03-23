@@ -23,7 +23,7 @@ const BusRoute = () => {
   return (
     <div>
       <div className="flex">
-        <div className="ml-2">
+        <div className="ml-2 h-12">
           <SwapSelectBoxes />
         </div>
         <div className="ml-1.5 h-12">

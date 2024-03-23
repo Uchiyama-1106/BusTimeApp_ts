@@ -10,8 +10,8 @@ interface SelectBoxProps {
 const DateSelectBox: React.FC<SelectBoxProps> = ({ value, list, onChange }) => {
   const List: number[] = list;
   return (
-    <div className="w-14 py-4 border border-black rounded-lg font-semibold bg-white">
-      <select value={value} onChange={onChange} className="w-11 bg-white">
+    <div className="w-14 py-3 border border-black rounded-lg font-semibold bg-white">
+      <select value={value} onChange={onChange} className="w-13 pl-0.5 bg-white">
         {List.map((option, index) => (
           <option key={index} value={option} className="text-bold">
             {option}
