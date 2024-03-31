@@ -27,8 +27,12 @@ const BusRoute = () => {
           <SwapSelectBoxes />
         </div>
         <div className="ml-1.5 h-12">
-          <SelectBox value={start} onChange={startChange} />
-          <SelectBox value={goal} onChange={goalChange} />
+          <div className="flex">
+          <div className="font-semibold mr-2">出発</div><SelectBox value={start} onChange={startChange} />
+          </div>
+        <div className="flex">
+          <div className="font-semibold mr-2">到着</div><SelectBox value={goal} onChange={goalChange} />
+        </div>
         </div>
       </div>
     </div>

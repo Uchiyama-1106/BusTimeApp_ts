@@ -2,6 +2,7 @@ import './App.css'
 import BusRoute from "./CompornentList/BusRoute/BusRoute.tsx";
 import BusTime from "./CompornentList/BusTime/BusTime.tsx";
 import NowTime from "./CompornentList/NowTime.tsx";
+import Atention from './CompornentList/Atention.tsx';
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
 
       <div className='... mt-40 mx-1.5'>
         <BusTime />
+      </div>
+      <div className='... mt-2 mx-1.5'>
+        <Atention />
       </div>
     </div>
   );

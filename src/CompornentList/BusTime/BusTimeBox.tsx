@@ -35,10 +35,19 @@ const BusTimeBox: React.FC<BusTimeBoxProps> = ({ TripAndTimes }) => {
 
 
   return (
-    <div className="mt-1.5 pl-1 border-2 border-dashed border-orange-300 rounded-lg font-semibold">
+    <div className="mt-1.5 px-1 border-2 border-dashed border-orange-300 rounded-lg font-semibold">
       <div className="text-5xl">{Start.departure_time.slice(0, -3) + " ➡︎ " + Goal.arrival_time.slice(0, -3)}</div>
-      <div className="text-sm">　出発：{IDChangeName(Start.stop_id)}　　到着：{IDChangeName(Goal.stop_id)}</div>
-      <div className="text-sm text-right">終着地点　{Trips.trip_headsign}</div>
+      <div className="flex ml-4 space-x-6">
+        <div className="text-sm">
+          <span>出発：</span>
+          <span>{IDChangeName(Start.stop_id)}</span>
+        </div>
+        <div className="text-sm">
+          <span>到着：</span>
+          <span>{IDChangeName(Goal.stop_id)}</span>
+        </div>
+      </div>
+      <div className="text-sm text-right">行先　{Trips.trip_headsign}　</div>
     </div>
   );
 };
