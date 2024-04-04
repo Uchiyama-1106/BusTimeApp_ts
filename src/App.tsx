@@ -17,7 +17,7 @@ function App() {
       <div className='... mt-40 mx-1.5'>
         <BusTime />
       </div>
-      <div className='... mt-2 mx-1.5'>
+      <div className='... my-3 mx-2'>
         <Atention />
       </div>
     </div>
