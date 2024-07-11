@@ -22,7 +22,7 @@ const BusTime = () => {
       <BusTimeBox key={index} TripAndTimes={value} />
     ));
   };
-  
+
   return <div className="pt-0.5">{CreateBusTime()}</div>;
 };
 export default BusTime;

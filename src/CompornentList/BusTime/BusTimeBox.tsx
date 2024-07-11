@@ -29,14 +29,17 @@ const BusTimeBox: React.FC<BusTimeBoxProps> = ({ TripAndTimes }) => {
   const Goal: stop_times = TripAndTimes[2];
   const StopInfo: stops[] = useAtomValue(stopInfo);
   const IDChangeName = (id: string) => {
-    const stop = StopInfo.find(value => id === value.stop_id);
+    const stop = StopInfo.find((value) => id === value.stop_id);
     return stop ? stop.stop_name : "";
-  }
-
+  };
 
   return (
     <div className="mt-1.5 px-1 border-2 border-dashed border-orange-300 rounded-lg font-semibold">
-      <div className="text-5xl">{Start.departure_time.slice(0, -3) + " ➡︎ " + Goal.arrival_time.slice(0, -3)}</div>
+      <div className="text-5xl">
+        {Start.departure_time.slice(0, -3) +
+          " ➡︎ " +
+          Goal.arrival_time.slice(0, -3)}
+      </div>
       <div className="flex ml-4 space-x-6">
         <div className="text-sm">
           <span>出発：</span>
